@@ -19,15 +19,29 @@
  *      disk map, and disk directory.
  */
 
-#include <string>
-#include <iostream>
-#include <vector>
-#include "Commands.h"
+#include <string> //Needed for string.
+#include <iostream> //Needed for cin/cout/getline.
+#include <vector> //Needed for vector for function return.
+#include "Commands.h" //Commands the OS uses.
+#include <time.h> //Needed for time for inode.
 
 //Function Prototypes
 std::vector<std::string> parseInput(const std::string& input);  //Parses commands given to the program.
                                                                 //Returns vector because its not easy
                                                                 //to return arrays.
+//Inode structure
+struct Inode {
+    std::string mode = "--rwxr--r--";   //Default as given by specifications.
+    std::string uid = "CSS430";         //Default as given by specifications.
+    std::string guid = "CSS430";        //Default as given by specifications.
+    std::string atime; //TODO: set time to time created.
+    std::string ctime; //TODO: set time to time created.
+    std::string mtime; //TODO: set time to time created.
+    int size = 0;
+    int blockCount = 0;
+    bool* directBlocks[10];
+};
+
 
 int main() {
     std::cout << "Welcome to a simulation of an Inode File System! Use \"quit\" to leave the program!\nWritten by:\n";
@@ -39,6 +53,7 @@ int main() {
     //Local Variables
     std::string consoleInput;
     std::vector<std::string> givenCommand;
+    bool inodeArray[1000];  //Can't have more than 1000 files with a disk the  side of 1000.
     bool disk[1000] = {false};
 
     do {
