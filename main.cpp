@@ -22,11 +22,12 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include "Commands.h"
 
 //Function Prototypes
-std::vector<std::string> parseInput(std::string input); //Parses commands given to the program.
-                                                        //Returns vector because its not easy
-                                                        //to return arrays.
+std::vector<std::string> parseInput(const std::string& input);  //Parses commands given to the program.
+                                                                //Returns vector because its not easy
+                                                                //to return arrays.
 
 int main() {
     std::cout << "Welcome to a simulation of an Inode File System! Use \"quit\" to leave the program!\nWritten by:\n";
@@ -47,19 +48,19 @@ int main() {
         //Switch statement doesn't work effectively on strings unless you convert each string
         //to int, so therefore if is being used. :(
         if(givenCommand.at(1) == "NF") {
-            NF(givenCommand[1], givenCommand[2], disk);
+            Commands::NF(givenCommand[1], givenCommand[2], disk);
         }
         else if(givenCommand.at(1) == "MF") {
-            MF(givenCommand[1], givenCommand[2], disk);
+            Commands::MF(givenCommand[1], givenCommand[2], disk);
         }
         else if(givenCommand.at(1) == "DF") {
-            DF(givenCommand[1], disk);
+            Commands::DF(givenCommand[1], disk);
         }
         else if(givenCommand.at(1) == "DB") {
-            DB(givenCommand[1], givenCommand[2], disk);
+            Commands::DB(givenCommand[1], givenCommand[2], disk);
         }
         else if(givenCommand.at(1) == "PR") {
-            std::cout << PR(disk);
+            std::cout << Commands::PR(disk);
         }
         else if (givenCommand.at(1) != "quit") {
             std::cout << "Invalid Command.\n";
@@ -68,7 +69,7 @@ int main() {
     return 0;
 }
 
-std::vector<std::string> parseInput(std::string input) {    //Parses commands given to the program.
+std::vector<std::string> parseInput(const std::string& input) {    //Parses commands given to the program.
                                                             //Returns vector because its not easy
                                                             //to return arrays.
     //Local Variables
