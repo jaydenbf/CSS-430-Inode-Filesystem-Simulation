@@ -32,8 +32,8 @@ std::vector<std::string> parseInput(const std::string& input);  //Parses command
 int main() {
     std::cout << "Welcome to a simulation of an Inode File System! Use \"quit\" to leave the program!\nWritten by:\n";
     std::cout << "Logan Petersen\n";
+    std::cout << "Jayden Fullerton\n";
     //TODO: ADD YOUR NAME HERE.
-    //cout << "NAME"\n;
     //cout << "NAME"\n;
 
     //Local Variables
